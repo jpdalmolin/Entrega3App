@@ -12,8 +12,8 @@ const App = () => {
   const [selectedTask, setSelectedTask] = useState(null);
 
   const onHandlerChange = (text) => {
-
-    setTask(text)
+    
+    setTask(text.replace(/[^A-z]/g, ''));
   }
 
   const onHandlerSubmit = () => {
@@ -52,6 +52,8 @@ const App = () => {
         onHandlerSubmit={onHandlerSubmit}
         placeholder='Agregar nueva compra'
         task={task}
+       
+        
       />
       <TaskList 
         tasks={tasks}
