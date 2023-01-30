@@ -1,7 +1,8 @@
-import { AddItem, CustomModal, Header, TaskList } from './components';
+import { AddItem, Card, CustomModal, Header, TaskList, TextContainer } from './components';
+import { Button, Text, View } from 'react-native';
 import React, { useState } from 'react';
 
-import { View } from 'react-native';
+import { Buyscreen } from './screens';
 import { colors } from './constants/theme/colors';
 import { styles } from './styles';
 
@@ -10,6 +11,13 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const[confirmed,setConfirmed] = useState(false);
+  const[selectedBuy, setSelectedBuy] = useState(null);
+  const [userText,setUserText] = useState(null);
+  
+ 
+  
+  
 
   const onHandlerChange = (text) => {
     
@@ -29,6 +37,8 @@ const App = () => {
   const onHandlerModal = (item) => {
     setIsModalVisible(!isModalVisible)
     setSelectedTask(item);
+    console.log(item);
+    
   }
 
 
@@ -41,10 +51,58 @@ const App = () => {
     setTasks((prevTaskList) => prevTaskList.filter((task) => task.id !== selectedTask.id));
     setIsModalVisible(!isModalVisible);
   }
+  const onHandleConfirm = () => {
+    const ChoosenText= selectedTask.value;
+   if(ChoosenText==isNaN){
+    alert('no es texto')
+   } else{
+
+    setSelectedBuy(ChoosenText);
+    setConfirmed(true);
+    setIsModalVisible(!isModalVisible);
+     console.log(setSelectedBuy);
+     console.log(selectedBuy);
+   }
+    
+
+  }
+
+  
+  const Confirmed=()=> confirmed ? (
+    <Card style={styles.confirmedContainer}>
+      <Text style={styles.confirmedTitle}>Compra Seleccionada</Text>
+      <TextContainer text={selectedBuy}></TextContainer>
+      
+      <Button
+      title="Ir al carro"
+      color={colors.primary}
+      onPress={onHandleBuy}
+      />
+      
+
+
+    </Card>
+    
+  ):null;
+    
+    
+  const onHandleBuy = () => (
+    
+
+      <Buyscreen/>
+
+
+
+    
+  )
+      
+  
+  
 
   return (
     <View style={styles.container}>
       <Header title='Agrega compra' />
+      
       <AddItem 
         buttonColor={colors.primary}
         buttonText='Add'
@@ -52,9 +110,8 @@ const App = () => {
         onHandlerSubmit={onHandlerSubmit}
         placeholder='Agregar nueva compra'
         task={task}
-       
-        
       />
+     
       <TaskList 
         tasks={tasks}
         onHandlerModal={onHandlerModal}
@@ -65,7 +122,10 @@ const App = () => {
         onHandleCancel={onHandleCancel}
         onHandleDelete={onHandleDelete}
         selectedTask={selectedTask}
+        onHandleConfirm={onHandleConfirm}
      />
+      <Confirmed onHandleBuy={onHandleBuy}  />
+      
     </View>
   );
 }

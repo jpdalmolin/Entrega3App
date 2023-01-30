@@ -7,6 +7,7 @@ export const styles=StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         paddingVertical: 20,
+        
       },
       modalTitle: {
         fontSize: 18,

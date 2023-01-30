@@ -1,5 +1,6 @@
 import { Button, TextInput, View } from 'react-native';
 
+import Card from '../card';
 import React from 'react';
 import { styles } from './styles'
 
@@ -12,7 +13,8 @@ const AddItem = ({
     onHandlerSubmit
 }) => {
     return (
-        
+        <View style={styles.container}>
+            
         <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input} 
@@ -24,6 +26,7 @@ const AddItem = ({
           onChangeText={onHandlerChange}
         />
         <Button disabled={!task} title={buttonText} color={buttonColor} onPress={onHandlerSubmit} />
+      </View>
       </View>
       
     )

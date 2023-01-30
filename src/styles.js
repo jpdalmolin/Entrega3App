@@ -5,8 +5,19 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
     },
-   
-   
+    confirmedContainer:{
+      width:'70%',
+      height:180,
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      marginVertical:30,
+        
+    },
+    confirmedTitle:{
+        
+        fontSize:20,
+    }
+
    
 
   });

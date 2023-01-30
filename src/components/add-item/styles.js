@@ -1,10 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+
+    container: {
+      flex:1,
+      alignItems: "center",
+      },
     inputContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 30,
+        marginTop: 10,
         marginHorizontal: 20,
       },
       input: {

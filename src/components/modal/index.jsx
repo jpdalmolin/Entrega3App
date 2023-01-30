@@ -4,7 +4,7 @@ import Card from '../card';
 import React from "react";
 import { styles } from "./styles";
 
-const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDelete}) => {
+const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDelete,onHandleConfirm}) => {
     return (
         <Modal visible={isModalVisible} animationType='slide'>
         <View style={styles.modalContainer}>
@@ -30,9 +30,10 @@ const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDel
         <View style={styles.modalTitle}>
         <Text style={styles.modalDetailMessageConfirm}>Confirm item?</Text>
         
-        <Button
+        <Button 
               title="Confirm"
               color='blue'
+              onPress={onHandleConfirm}
             />
         
         </View>
