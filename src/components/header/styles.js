@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
     },
     title:{
         fontSize:30,
-        fontWeight:"bold",
+        fontFamily:'Raleway-bold'
     }
 });
